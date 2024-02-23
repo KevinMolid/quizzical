@@ -1,14 +1,14 @@
 import React from 'react'
 
-export default function Question() {
+export default function Question(props) {
     return (
         <>
-            <h1 className="question--question">Question 1</h1>
+            <h1 className="question--question">{props.question}</h1>
             <ul className="question--answers">
-                <li className="answer">Answer 1</li>
-                <li className="answer">Answer 2</li>
-                <li className="answer">Answer 3</li>
-                <li className="answer">Answer 4</li>
+                <li className="answer">{props.answer1}</li>
+                <li className="answer">{props.answer2}</li>
+                <li className="answer">{props.answer3}</li>
+                <li className="answer">{props.answer4}</li>
             </ul>
         </>
     )
