@@ -12,6 +12,7 @@ body {
   text-align: center;
   background: url('src/assets/BG.png');
   background-size: cover;
+  padding: 3em 1em;
 }
 
 .intro--logo-img {
@@ -51,10 +52,11 @@ body {
 
 /* Question component */
 .question {
-  max-width: 90vw;
+  max-width: 800px;
 }
 
 .question--question {
+  font-size: 1.2em;
   margin-bottom: 0.4em;
 }
 
@@ -64,7 +66,7 @@ body {
   list-style-type: none;
   padding: 0;
   gap: 0.4em;
-  margin-bottom: 1.6em;
+  margin-bottom: 2em;
 }
 
 @media (min-width: 600px) {
@@ -89,4 +91,8 @@ body {
 
 .answer:hover {
   border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.question--hr {
+  margin-bottom: 2em;
 }
