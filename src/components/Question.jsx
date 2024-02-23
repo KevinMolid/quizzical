@@ -1,4 +1,7 @@
 import React from 'react'
+import {decode} from 'html-entities'
+
+decode('&lt; &gt; &quot; &apos; &amp; &#169; &#8710;')
 
 export default function Question(props) {
     return (
