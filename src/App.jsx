@@ -13,6 +13,7 @@ function App() {
   }
 
   useEffect(() => {
+    const controller = new AbortController()
     console.log('getting questions')
 
     fetch("https://opentdb.com/api.php?amount=10")
@@ -21,6 +22,11 @@ function App() {
         console.log(data.results)
         setQuestions(data.results)
       })
+
+    return () => {
+      // This is the cleanup function/callback which will be called when the component unmounts
+      controller.abort()
+    }
   }, [])
 
   return (
