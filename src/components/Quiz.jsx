@@ -24,6 +24,7 @@ export default function Quiz(props) {
     return (
         <>
             {questionElements}
+            <button className='btn'>Check answers</button>
         </>
     )
 }

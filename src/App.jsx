@@ -16,7 +16,7 @@ function App() {
     const controller = new AbortController()
     console.log('getting questions')
 
-    fetch("https://opentdb.com/api.php?amount=10")
+    fetch("https://opentdb.com/api.php?amount=10&type=multiple")
       .then(res => res.json())
       .then(data => {
         console.log(data.results)
