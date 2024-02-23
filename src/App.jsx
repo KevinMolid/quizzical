@@ -14,6 +14,7 @@ function App() {
 
   useEffect(() => {
     console.log('getting questions')
+
     fetch("https://opentdb.com/api.php?amount=10")
       .then(res => res.json())
       .then(data => {

@@ -50,6 +50,10 @@ body {
 }
 
 /* Question component */
+.question {
+  max-width: 90vw;
+}
+
 .question--question {
   margin-bottom: 0.4em;
 }
