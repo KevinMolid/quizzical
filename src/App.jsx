@@ -20,7 +20,7 @@ function App() {
         console.log(data.results)
         setQuestions(data.results)
       })
-  }, [playing])
+  }, [])
 
   return (
     <>
