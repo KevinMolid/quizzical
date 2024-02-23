@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url('src/assets/BG.png');
+  background: url('/src/assets/BG.png');
   background-size: cover;
   padding: 4em;
 }
