@@ -97,6 +97,11 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
+.selected {
+  background: rgba(0, 195, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
 .question--hr {
   margin-bottom: 1.5em;
   border-top: 1px solid #cddee0;

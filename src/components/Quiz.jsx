@@ -5,18 +5,26 @@ export default function Quiz(props) {
     if (!props.questions) return <div>Loading...</div>
 
     const questionElements = props.questions.map((question, index) => {
-        const answers = [...question.incorrect_answers]
+        const answers = question.incorrect_answers.map(answer => {
+            return ({
+                answer: answer,
+                correct: false
+            })
+        })
+
+        // Old code
         const correctAnswerIndex = Math.floor(Math.random() * (answers.length + 1))
-        answers.splice(correctAnswerIndex, 0, question.correct_answer);
+        answers.splice(correctAnswerIndex, 0, {
+            answer: question.correct_answer,
+            correct: true
+        });
 
         return (
             <Question
               key={index}
+              index={index+1}
               question={question.question}
-              answer1={answers[0]}
-              answer2={answers[1]}
-              answer3={answers[2]}
-              answer4={answers[3]}
+              answers={answers}
             />
         )
     })
