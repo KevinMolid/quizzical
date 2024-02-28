@@ -6,10 +6,22 @@ export default function Question(props) {
 
     const answers = props.answers.map((answer, index) => {
         function handleClick() {
-            setSelected(index)
+            props.gameRunning && setSelected(index)
         }
 
-        const style = index === selected ? 'selected' : ''
+        let style = ''
+
+        if (props.gameRunning) { // Game running
+            style = index === selected ? 'selected' : ''
+        } else { // Game over
+            if (answer.correct && index === selected) {
+                style = 'score'
+            } else if (answer.correct) {
+                style = 'correct'
+            } else if (index === selected) {
+                style = 'wrong'
+            } 
+        }
 
         return (
             <li onClick={handleClick} className={`answer ${style}`} key={index}>{decode(answer.answer)}</li>

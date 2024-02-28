@@ -59,7 +59,7 @@ body {
   color: #253e41;
   text-align: start;
   font-size: 1.2em;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.6em;
 }
 
 .question--answers {
@@ -100,6 +100,21 @@ body {
 .selected {
   background: rgba(0, 195, 255, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.score,
+.correct {
+  font-weight: 600;
+  color: rgb(0, 102, 9);
+  background: rgba(0, 255, 21, 0.3);
+  border-color: rgb(0, 102, 9);
+}
+
+.wrong {
+  font-weight: 600;
+  color: rgb(102, 0, 0);
+  background: rgba(255, 0, 0, 0.3);
+  border-color: rgb(102, 0, 0);
 }
 
 .question--hr {
