@@ -4,14 +4,21 @@ import Question from './Question.jsx'
 export default function Quiz(props) {
     if (!props.questions) return <div>Loading...</div>
     const [gameRunning, setGameRunning] = React.useState(true)
-    const [questions, setQuestions] = React.useState([]) // Set array of questions (object) with answers
+    const [questions, setQuestions] = React.useState([])
+    const [answers, setAnswers] = React.useState({}); // To track user's selections
 
     function gameOver() {
+        // Count correct answers
+        const correctAnswersCount = Object.values(answers).filter(isCorrect => isCorrect).length;
+        console.log(`Correct answers: ${correctAnswersCount}`);
         setGameRunning(false)
     }
 
+    function handleAnswerSelected(questionIndex, isCorrect) {
+        setAnswers(prev => ({...prev, [questionIndex]: isCorrect}));
+    }
+
     React.useEffect(() => {
-        console.log(props.questions)
         const newQuestions = props.questions.map((question) => {
             const answers = question.incorrect_answers.map(answer => {
                 return ({
@@ -41,6 +48,7 @@ export default function Quiz(props) {
               question={question.question}
               answers={question.answers}
               gameRunning={gameRunning}
+              onAnswerSelected={handleAnswerSelected}
             />
         )
     })

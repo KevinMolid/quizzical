@@ -6,7 +6,11 @@ export default function Question(props) {
 
     const answers = props.answers.map((answer, index) => {
         function handleClick() {
-            props.gameRunning && setSelected(index)
+            if (props.gameRunning) {
+                setSelected(index);
+                // Call the callback function, passing true if the selected answer is correct
+                props.onAnswerSelected(props.index, answer.correct);
+            }
         }
 
         let style = ''
