@@ -5,17 +5,25 @@ export default function Quiz(props) {
     if (!props.questions) return <div>Loading...</div>
     const [gameRunning, setGameRunning] = React.useState(true)
     const [questions, setQuestions] = React.useState([])
-    const [answers, setAnswers] = React.useState({}); // To track user's selections
+    const [answers, setAnswers] = React.useState({})
+    const [correctAnswersCount, setCorrectAnswersCount] = React.useState(null)
+    const [btnTxt, setBtnTxt] = React.useState('Check answers')
 
-    function gameOver() {
-        // Count correct answers
-        const correctAnswersCount = Object.values(answers).filter(isCorrect => isCorrect).length;
-        console.log(`Correct answers: ${correctAnswersCount}`);
-        setGameRunning(false)
+    function handleBtnClick() {
+        if (gameRunning) {
+            // Count correct answers
+            const correctAnswersCount = Object.values(answers).filter(isCorrect => isCorrect).length
+            setCorrectAnswersCount(correctAnswersCount)
+            setGameRunning(false)
+            setBtnTxt('Play again')
+        }
+        else {
+            props.restartGame()
+        }
     }
 
     function handleAnswerSelected(questionIndex, isCorrect) {
-        setAnswers(prev => ({...prev, [questionIndex]: isCorrect}));
+        setAnswers(prev => ({...prev, [questionIndex]: isCorrect}))
     }
 
     React.useEffect(() => {
@@ -56,7 +64,8 @@ export default function Quiz(props) {
     return (
         <>
             {questionElements}
-            <button className='btn' onClick={gameOver}>Check answers</button>
+            {!gameRunning && <span className="score-txt">You got {correctAnswersCount}/{props.questions.length} correct!</span>}
+            <button className='btn' onClick={handleBtnClick}>{btnTxt}</button>
         </>
     )
 }
